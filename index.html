@@ -4,31 +4,56 @@
 
         <title>Trivia Game</title>
         <meta charset="UTF-8">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+        <link rel="stylesheet" href="assets/css/style.css">
     </head>
 
     <body>
 
-    <div class = "wrapper">
-
-        <div class="trivia">
+        <div class = "container top">
+        <nav class = "nav justify-content-center">
             <h1>Game of Throne Trivia Game</h1>
+        </nav>
         </div>
 
-        <div id= "timer-text"></div>
+        <div class = "wrapper">
 
-        <div id = "questions"></div>
+        <div class = "container">
 
-        <div id = "feedback-text"></div>
+         <div class = "row">
+             <div class = "col-sm-12">
+                 <div id= "timer-text"></div>
+             </div>
+         </div>   
 
-        <button type="start" class="btn btn-dark bt-block">Start</button>
+         <div class = "row">
+            <div class = "col-sm-12">
+            
+                <div id = "questions"></div>
 
+                <div id = "image-div"></div>
+
+                <div id = "feedback-text"></div>  
+
+                <div id = "result-text"></div>
+
+            </div>
+         </div>
+
+         <div class = "row">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-dark bt-lg" id = "start">START</button>
+            </div>
+        </div>
+        
+        
+        </div>
+
+        </div>
         
 
-    </div>
+    
     
     
     

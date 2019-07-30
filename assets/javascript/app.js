@@ -8,7 +8,7 @@ var questionObj = [
         choice: ["Stark", "Arryn", "Martell", "Baelish"],
         rightAnswer: 3,
         answer: "Baelish",
-        gif: "../images/littlefinger"
+        gif: "assets/images/littlefinger.gif"
         
     },
 
@@ -17,7 +17,7 @@ var questionObj = [
         choice: ["Long Claw", "Oath Keeper", "Needle", "Heartsbane"],
         rightAnswer: 2,
         answer: "Needle",
-        gif: "../images/needle"
+        gif: "assets/images/needle.gif"
 
     },
 
@@ -26,7 +26,7 @@ var questionObj = [
         choice: ["The High Sparrow", "Bran Stark", "Jaqen H'ghar", "Darrio Naharis"],
         rightAnswer: 1,
         answer: "Bran Stark",
-        gif: "../images/bran"
+        gif: "assets/images/bran.gif"
     },
 
     {
@@ -34,7 +34,7 @@ var questionObj = [
         choice: ["Winterfell", "Highgarden", "The Vale", "Stormlands"],
         rightAnswer: 1,
         answer: "Highgarden",
-        gif: "../images/highgarden"
+        gif: "assets/images/highgarden.gif"
     },
 
     {
@@ -42,7 +42,7 @@ var questionObj = [
         choice: ["A raven", "Dragon Glass", "Greyscale", "Ice"],
         rightAnswer: 1,
         answer: "Dragon Glass",
-        gif: "../images/nightking"
+        gif: "assets/images/nightking.gif"
     },
 
     {
@@ -50,7 +50,7 @@ var questionObj = [
         choice: ["Sansa Stark", "Tyrion Lannister", "Olenna Tyrell", "Lord Varys"],
         rightAnswer: 2,
         answer: "Olenna Tyrell",
-        gif: "../images/joffrey"
+        gif: "assets/images/joffrey.gif"
     },
 
     {
@@ -58,7 +58,7 @@ var questionObj = [
         choice: ["Mother of Dragon", "Mhysa", "White Queen", "Khaleesi"],
         rightAnswer: 2,
         answer: "White Queen",
-        gif: "../images/dany"
+        gif: "assets/images/dany.gif"
 
     },
 
@@ -67,7 +67,7 @@ var questionObj = [
         choice: ["She's his cousin", "She's his aunt", "She's his half-sister", "She's his real mother"],
         rightAnswer: 1,
         answer: "She's his aunt",
-        gif: "../images/jon"
+        gif: "assets/images/jon.gif"
     }
 ]
 
@@ -93,7 +93,10 @@ function gameRunning(){
     timerRunning();
     decrement();
 
-    $("#questions").html("<h2"> + questionObj[count].question + "</h2>");
+    $("#image-div").empty();
+    $("#feedback-text").empty();
+
+    $("#questions").html("<h2>" + questionObj[count].question + "</h2>");
     
     for (var i = 0; i <4; i++) {
         var multipleChoice = $("<button>");
@@ -104,7 +107,7 @@ function gameRunning(){
     }
 
     $(".mc").on("click", function (){
-        userAnswer = $(this).data("index");
+        userAnswer = $(this).data("choicevalue")
         clearInterval(intervalId);
         respond = true;
         feedback();
@@ -114,7 +117,7 @@ function gameRunning(){
 
 
 function gameStart() {
-    $("#start").hide;
+    $("#start").hide();
     correctAnswer = 0;
     wrongAnswer = 0;
     unAnswer = 0;
@@ -127,9 +130,12 @@ function gameStart() {
 function timerRunning() {
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
+    
 }
 
 function decrement() {
+    
+
     timer--;
     
     $("#timer-text").html("<h2>" + "Time Remaining: " + timer + "</h2>");
@@ -149,17 +155,17 @@ function decrement() {
 }
 
 
-
-
-
 function feedback () {
-    
-    count++;
+
+    $("#questions").empty();
+    $(".mc").empty();
+    $("#timer-text").empty();
     
     var imageHolder = $("<img>");
     imageHolder.addClass("gifImage");
     imageHolder.attr("src", questionObj[count].gif);
-    $("#questions").append(imageHolder);
+    $("#image-div").append(imageHolder);
+
 
     if (userAnswer === questionObj[count].rightAnswer && respond === true) {
         correctAnswer++;
@@ -167,7 +173,7 @@ function feedback () {
     }
 
     else if (userAnswer != questionObj[count].rightAnswer && respond === true) {
-        wroingAnswer++;
+        wrongAnswer++;
         $("#feedback-text").html("Incorrect!! The answer was " + questionObj[count].answer);
     }
 
@@ -176,7 +182,31 @@ function feedback () {
         $("#feedback-text").html("Out of time!! The answer was " + questionObj[count].answer)
     }
 
+    if (count === questionObj.length-1) {
+        setTimeout(endPage, 5000);
+        
+    } else {
+    count++;
+    setTimeout(gameRunning, 5000);
+   
+    }
+
+    console.log("rightAnswer: " + questionObj[count].rightAnswer)
+    console.log("userAnswer" + userAnswer)
+    
+
 }
+
+function endPage() {
+
+    $("#image-div").hide();
+    $("#feedback-text").hide();
+
+    $("#result-text").html("All done, here's how you did!");
+
+    $("#start").show();
+}
+
 
 
 
