@@ -67,7 +67,7 @@ var questionObj = [
         choice: ["She's his cousin", "She's his aunt", "She's his half-sister", "She's his real mother"],
         rightAnswer: 1,
         answer: "She's his aunt",
-        gif: "assets/images/jon.gif"
+        gif: "assets/images/jon-dany.gif"
     }
 ]
 
@@ -76,7 +76,6 @@ var questionObj = [
 var correctAnswer = 0;
 var wrongAnswer = 0;
 var unAnswer = 0;
-var showQuestions;
 var count = 0;
 var timer = 20;
 var intervalId;
@@ -95,7 +94,6 @@ function gameRunning(){
 
     $("#image-div").empty();
     $("#feedback-text").empty();
-
     $("#questions").html("<h2>" + questionObj[count].question + "</h2>");
     
     for (var i = 0; i <4; i++) {
@@ -160,6 +158,7 @@ function feedback () {
     $("#questions").empty();
     $(".mc").empty();
     $("#timer-text").empty();
+    $("#result-text").empty();
     
     var imageHolder = $("<img>");
     imageHolder.addClass("gifImage");
@@ -202,11 +201,18 @@ function endPage() {
     $("#image-div").hide();
     $("#feedback-text").hide();
 
-    $("#result-text").html("All done, here's how you did!");
-
+    $("#result-text").html(" All done!! Let's see how you did! ");
+    $("#result-text").append("<p>" + " Correct Answer: " + correctAnswer + "</p>");
+    $("#result-text").append("<p>" + " Incorrect Answer: " + wrongAnswer + "</p>");
+    $("#result-text").append("<p> Unanswered: " + unAnswer + "</p>");
+    $("#result-text").append("<hr>");
+    $("#result-text").append("<p> Do you want to play again? </p>");
+    count = 0;
     $("#start").show();
 }
 
+//timer needs to be reset every question
+// 
 
 
 

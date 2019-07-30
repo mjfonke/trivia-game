@@ -1,7 +1,87 @@
+* {
+    text-align: center;
+}
 
+body {
+    background-image: url("../images/iron-throne.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: bold;
+}
+
+#top {
+    background: lightgray;
+    opacity: 0.9;
+    width: 900px;
+    padding: 30px;
+    border-radius: 25px;
+}
 .wrapper {
     width: 900px;
-    height: 600px;
+    height: 450px;
+    margin: 50px auto 10px auto;
+    background-color: lightgray;
+    opacity: 0.9;
+    border-radius: 25px;
+    overflow: auto;
+}
+
+.gifImage {
+    width: 300px;
+    height: 200px;
+    opacity: 1;
+}
+
+div {
     margin: 10px auto 10px auto;
-    background-color: #9ee3d9;
+}
+
+#questions {
+    font-family: 'Martel', serif;
+}
+
+#feedback-text {
+    font-size: 25px;
+    margin-top: 20px;
+    font-family: 'Martel', serif;
+}
+
+#timer-text {
+    font-family: 'Martel', serif;
+}
+
+#result-text {
+    display: block;
+}
+
+.mc {
+    background-color: #343a40;
+    color: #ffffff;
+    margin: 10px auto 10px auto;
+    display: block;
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    font-family: 'Martel', serif;
+    font-size: 20px;
+    
+}
+
+button:hover {
+    background-color: #6b757d;
+}
+
+#start {
+    width: 300px;
+    height: 60px;
+    margin-top: 80px;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: bold;
+    font-size: 20px;
 }
