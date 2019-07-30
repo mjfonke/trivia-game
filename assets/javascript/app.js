@@ -77,7 +77,7 @@ var correctAnswer = 0;
 var wrongAnswer = 0;
 var unAnswer = 0;
 var count = 0;
-var timer = 20;
+var timer = 21;
 var intervalId;
 var respond = false;
 var userAnswer;
@@ -107,6 +107,7 @@ function gameRunning(){
     $(".mc").on("click", function (){
         userAnswer = $(this).data("choicevalue")
         clearInterval(intervalId);
+        timer = 21;
         respond = true;
         feedback();
     })
@@ -178,7 +179,8 @@ function feedback () {
 
     else {
         unAnswer++;
-        $("#feedback-text").html("Out of time!! The answer was " + questionObj[count].answer)
+        $("#feedback-text").html("Out of time!! The answer was " + questionObj[count].answer);
+        timer = 21;
     }
 
     if (count === questionObj.length-1) {
@@ -211,8 +213,7 @@ function endPage() {
     $("#start").show();
 }
 
-//timer needs to be reset every question
-// 
+
 
 
 
