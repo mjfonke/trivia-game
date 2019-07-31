@@ -91,10 +91,12 @@ function gameRunning(){
 
     timerRunning();
     decrement();
-
+    
     $("#image-div").empty();
     $("#feedback-text").empty();
     $("#questions").html("<h2>" + questionObj[count].question + "</h2>");
+    $("#result-text").empty();
+
     
     for (var i = 0; i <4; i++) {
         var multipleChoice = $("<button>");
@@ -121,7 +123,6 @@ function gameStart() {
     wrongAnswer = 0;
     unAnswer = 0;
     gameRunning();
-    console.log("running")
 }
 
 
@@ -159,7 +160,6 @@ function feedback () {
     $("#questions").empty();
     $(".mc").empty();
     $("#timer-text").empty();
-    $("#result-text").empty();
     
     var imageHolder = $("<img>");
     imageHolder.addClass("gifImage");
@@ -200,17 +200,25 @@ function feedback () {
 
 function endPage() {
 
-    $("#image-div").hide();
-    $("#feedback-text").hide();
+    $("#image-div").empty();
+    $("#feedback-text").empty();
 
-    $("#result-text").html(" All done!! Let's see how you did! ");
+    $("#result-text").html("<p> All done!! Let's see how you did! </p>");
+    $("#result-text").html(" <br>");
     $("#result-text").append("<p>" + " Correct Answer: " + correctAnswer + "</p>");
     $("#result-text").append("<p>" + " Incorrect Answer: " + wrongAnswer + "</p>");
     $("#result-text").append("<p> Unanswered: " + unAnswer + "</p>");
     $("#result-text").append("<hr>");
     $("#result-text").append("<p> Do you want to play again? </p>");
     count = 0;
-    $("#start").show();
+    var restart = $("<button>");
+    restart.text("RESTART");
+    restart.addClass("restartClass");
+    $("#result-text").append(restart);
+
+    restart.click(gameStart);
+
+
 }
 
 
