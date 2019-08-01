@@ -191,9 +191,6 @@ function feedback () {
     setTimeout(gameRunning, 5000);
    
     }
-
-    console.log("rightAnswer: " + questionObj[count].rightAnswer)
-    console.log("userAnswer" + userAnswer)
     
 
 }
